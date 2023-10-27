@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main{
+            height: 100vh;
+            width: 100vw;
+            background-image: url("https://www.shutterstock.com/image-vector/elegant-smart-watch-blank-screen-260nw-257974742.jpg" );
+            background-repeat: no-repeat;
+            background-size: 1200px 700px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: gold;
+
+        }
+
+        .innerclock{
+            height: 100vh;
+            width: 200vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: rgb(15, 15, 15);
+        }
+
+        .time{
+            font-size: 6rem;
+            box-shadow: 5px solid grey;
+        }
+
+        .currentDate{
+            font-size: 3rem;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    <div class="main">
+        <div class="innerclock">
+            <div class="time">
+                <span id="hours"></span>
+                <span id="minutes"></span>
+                <span id="seconds"></span>&nbsp;
+                <span id="ampm"></span>
+            </div>
+            <div class="currentDate">
+
+           <span id="day"></span>&nbsp;
+           <span id="date"></span>
+           <span id="month"></span>
+           <span id="year"></span>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var months = ["january","february","march","april","may","june","july","august","september","october","novmber","december"];
+
+        var days = ["sunday","monday","tuesday","wednsday","thursady","friday","saturday"]
+
+        console.log(days[5])
+
+        setInterval(() => {
+
+            var d = new Date();
+
+            document.querySelector("#hours").innerHTML = d.getHours();
+            document.querySelector("#minutes").innerHTML = d.getMinutes();
+            document.querySelector("#seconds").innerHTML = d.getSeconds();
+            document.querySelector("#ampm").innerHTML = "PM";
+
+            document.querySelector("#day").innerHTML = days[d.getDay()];
+            document.querySelector("#date").innerHTML = d.getDate();
+            document.querySelector("#month").innerHTML = months[d.getMonth()];
+            document.querySelector("#year").innerHTML = d.getFullYear();
+
+
+            var hours = d.getHours();
+            if(d.getHours()>0 && d.getHours < 12){
+                document.querySelector("#ampm").innerHTML = "PM";
+            }
+            else{
+                document.querySelector("#ampm").innerHTML = "AM";
+            }
+
+
+
+
+
+
+        },1000)
+    </script>
+</body>
+</html>
